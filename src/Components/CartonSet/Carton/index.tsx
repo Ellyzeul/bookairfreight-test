@@ -11,10 +11,10 @@ export default function Carton({id}: Prop) {
       <span>Carton {cartons.findIndex(carton => Number(carton.key) === id) + 1}</span>
       <div>
         <Input label="Units" name="units" mask={POSITIVE_INT_REGEX}/>
-        <Input label="Length (in cm)" name="units" mask={POSITIVE_FLOAT_REGEX}/>
-        <Input label="Width (in cm)" name="units" mask={POSITIVE_FLOAT_REGEX}/>
-        <Input label="Height (in cm)" name="units" mask={POSITIVE_FLOAT_REGEX}/>
-        <Input label="Weight" name="units" mask={POSITIVE_FLOAT_REGEX}/>
+        <Input label="Length (in cm)" name="length" mask={POSITIVE_FLOAT_REGEX}/>
+        <Input label="Width (in cm)" name="width" mask={POSITIVE_FLOAT_REGEX}/>
+        <Input label="Height (in cm)" name="height" mask={POSITIVE_FLOAT_REGEX}/>
+        <Input label="Weight" name="weight" mask={POSITIVE_FLOAT_REGEX}/>
         {
           cartons.length === 1
             ? <></>
