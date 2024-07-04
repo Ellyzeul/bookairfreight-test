@@ -1,0 +1,17 @@
+.selector-component {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  /* margin-left: 0.75rem; */
+}
+
+.selector-component > select {
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  background-color: inherit;
+  color: inherit;
+}
+
+.selector-component-error-message {
+  color: red;
+  font-size: 0.75rem;
+}

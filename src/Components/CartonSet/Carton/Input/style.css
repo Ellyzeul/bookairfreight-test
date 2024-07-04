@@ -1,0 +1,14 @@
+.carton-input-component {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+
+.carton-input-component > input {
+  width: 8rem;
+  background-color: inherit;
+  color: black;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  outline: none;
+}

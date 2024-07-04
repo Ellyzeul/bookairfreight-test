@@ -1,0 +1,9 @@
+.carton-set-component-add {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  margin-left: 0.75rem;
+  background-color: rgb(29, 78, 216);
+  cursor: pointer;
+}

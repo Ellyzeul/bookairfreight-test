@@ -1,0 +1,19 @@
+.carton-component > span {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.carton-component > div {
+  margin-left: 0.75rem;
+}
+
+.carton-component-remove {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  background-color: rgb(185, 28, 28);
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+}
