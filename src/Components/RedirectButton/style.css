@@ -6,9 +6,11 @@
   font-size: 0.75rem;
   border-radius: 0.25rem;
   border: 1px solid black;
+  cursor: pointer;
 }
 
 .redirect-button-component > button {
   border: none;
   background-color: inherit;
+  cursor: pointer;
 }
