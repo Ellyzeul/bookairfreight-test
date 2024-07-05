@@ -8,6 +8,9 @@ import "./style.css"
 
 export default function HomePage() {
   const [state, setState] = useState({
+    origin: {},
+    destination: {},
+    channel: {},
     cartons: [],
   } as ContextState)
 
@@ -23,7 +26,7 @@ export default function HomePage() {
           <Selector label="Shipping Channel" options={SHIPPING_CHANNELS}/>
         </section>
         <CartonSet/>
-        <button className="home-page-submit">Submit</button>
+        <button className="home-page-submit" onClick={() => console.log(state)}>Submit</button>
       </main>
     </HomePageContext.Provider>
   )
