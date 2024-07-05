@@ -4,20 +4,21 @@ import "./style.css"
 import CartonSetContext from "../../Context/CartonSetContext"
 
 export default function CartonSet() {
-  const [cartons, setCartons] = useState([<Carton key={0} id={0}/>])
   const [id, setId] = useState(1)
 
+  const [cartonsComponents, setCartonsComponents] = useState([<Carton key={0} id={0}/>])
+
   function addCarton() {
-    setCartons([...cartons, <Carton key={id} id={id}/>])
+    setCartonsComponents([...cartonsComponents, <Carton key={id} id={id}/>])
     setId(id + 1)
   }
 
   return (
-    <CartonSetContext.Provider value={{cartons, setCartons}}>
+    <CartonSetContext.Provider value={{cartonsComponents, setCartonsComponents}}>
       <section className="carton-set-component">
-        {cartons}
+        {cartonsComponents}
         {
-          cartons.length < 5
+          cartonsComponents.length < 5
             ? <button
               className="carton-set-component-add"
               onClick={addCarton}
