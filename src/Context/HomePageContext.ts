@@ -11,10 +11,16 @@ export type ContextState = {
   origin: SelectControl,
   destination: SelectControl,
   channel: SelectControl,
-  cartons: Array<{id: number, element: HTMLDivElement}>,
+  cartons: Array<CartonControl>,
 }
 
 type SelectControl = {
   element?: HTMLSelectElement,
-  setEmptyInput?: (empty: boolean) => void
+  setEmptyInput?: (empty: boolean) => void,
+}
+
+type CartonControl = {
+  id: number,
+  element: HTMLDivElement,
+  setEmptyInputCollection: Record<string, (empty: boolean) => void>,
 }

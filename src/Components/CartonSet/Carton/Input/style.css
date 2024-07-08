@@ -12,3 +12,8 @@
   border-radius: 0.25rem;
   outline: none;
 }
+
+.carton-input-component-error-message {
+  color: red;
+  font-size: 0.75rem;
+}

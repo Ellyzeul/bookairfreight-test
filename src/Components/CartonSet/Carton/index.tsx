@@ -9,10 +9,10 @@ export default function Carton({id}: Prop) {
   const {cartons} = state
   const {cartonsComponents, setCartonsComponents} = useContext(CartonSetContext)
   
-  function pushCartonRef(ref: HTMLDivElement | null) {
-    if(!ref || cartons.findIndex(({id: elemId}) => elemId === id) !== -1) return
+  function pushCartonRef(element: HTMLDivElement | null) {
+    if(!element || cartons.findIndex(({id: elemId}) => elemId === id) !== -1) return
 
-    setState({...state, cartons: [...cartons, {id: id, element: ref}]})
+    setState({...state, cartons: [...cartons, {id, element, setEmptyInputCollection: {}}]})
   }
 
   function removeCarton() {
@@ -24,11 +24,11 @@ export default function Carton({id}: Prop) {
     <section className="carton-component">
       <span>Carton {cartonsComponents.findIndex(carton => Number(carton.key) === id) + 1}</span>
       <div ref={pushCartonRef} key={id}>
-        <Input label="Units" name="units" mask={POSITIVE_INT_REGEX}/>
-        <Input label="Length (in cm)" name="length" mask={POSITIVE_FLOAT_REGEX}/>
-        <Input label="Width (in cm)" name="width" mask={POSITIVE_FLOAT_REGEX}/>
-        <Input label="Height (in cm)" name="height" mask={POSITIVE_FLOAT_REGEX}/>
-        <Input label="Weight" name="weight" mask={POSITIVE_FLOAT_REGEX}/>
+        <Input carton_id={id} label="Units" name="units" mask={POSITIVE_INT_REGEX}/>
+        <Input carton_id={id} label="Length (in cm)" name="length" mask={POSITIVE_FLOAT_REGEX}/>
+        <Input carton_id={id} label="Width (in cm)" name="width" mask={POSITIVE_FLOAT_REGEX}/>
+        <Input carton_id={id} label="Height (in cm)" name="height" mask={POSITIVE_FLOAT_REGEX}/>
+        <Input carton_id={id} label="Weight" name="weight" mask={POSITIVE_FLOAT_REGEX}/>
         {
           cartonsComponents.length === 1
             ? <></>

@@ -5,6 +5,7 @@ import Selector from "../../Components/Selector"
 import HomePageContext from "../../Context/HomePageContext"
 import type { ContextState } from "../../Context/HomePageContext"
 import "./style.css"
+import validateHomeState from "../../lib/validateSelector"
 
 export default function HomePage() {
   const [state, setState] = useState({
@@ -26,7 +27,7 @@ export default function HomePage() {
           <Selector label="Shipping Channel" options={SHIPPING_CHANNELS}/>
         </section>
         <CartonSet/>
-        <button className="home-page-submit" onClick={() => console.log(state)}>Submit</button>
+        <button className="home-page-submit" onClick={() => console.log(validateHomeState(state))}>Submit</button>
       </main>
     </HomePageContext.Provider>
   )
