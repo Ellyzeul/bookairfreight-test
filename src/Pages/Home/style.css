@@ -11,3 +11,8 @@
   border-radius: 0.25rem;
   cursor: pointer;
 }
+
+.home-page-interface-error {
+  font-size: 0.75rem;
+  color: red;
+}

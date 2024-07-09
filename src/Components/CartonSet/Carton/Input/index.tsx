@@ -9,6 +9,8 @@ export default function Input({carton_id, label, name, mask}: Prop) {
   const {state, setState} = useContext(HomePageContext)
 
   useEffect(() => {
+    if(state.cartons.find(({id}) => id === carton_id)?.setEmptyInputCollection[name]) return
+
     setState({
       ...state,
       cartons: state.cartons.map((carton) => {
@@ -18,7 +20,7 @@ export default function Input({carton_id, label, name, mask}: Prop) {
         return carton
       }),
     })
-  }, [state.cartons])
+  }, [carton_id, name, setState, state])
 
   return (
     <div className="carton-input-component">

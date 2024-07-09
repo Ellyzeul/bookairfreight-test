@@ -6,14 +6,26 @@ import HomePageContext from "../../Context/HomePageContext"
 import type { ContextState } from "../../Context/HomePageContext"
 import "./style.css"
 import validateHomeState from "../../lib/validateSelector"
+import shippingCost from "../../lib/shippingCost"
 
 export default function HomePage() {
+  const [interfaceError, setInterfaceError] = useState(false)
   const [state, setState] = useState({
     origin: {},
     destination: {},
     channel: {},
     cartons: [],
+    setInterfaceError,
   } as ContextState)
+
+  function onButtonClick() {
+    setInterfaceError(false)
+
+    console.log(validateHomeState(state))
+    if(!validateHomeState(state)) return
+
+    console.log(shippingCost(state))
+  }
 
   return (
     <HomePageContext.Provider value={{state, setState}}>
@@ -27,7 +39,8 @@ export default function HomePage() {
           <Selector label="Shipping Channel" options={SHIPPING_CHANNELS}/>
         </section>
         <CartonSet/>
-        <button className="home-page-submit" onClick={() => console.log(validateHomeState(state))}>Submit</button>
+        <button className="home-page-submit" onClick={onButtonClick}>Submit</button>
+        {interfaceError && <span className="home-page-interface-error"> Error processing the quote...</span>}
       </main>
     </HomePageContext.Provider>
   )
