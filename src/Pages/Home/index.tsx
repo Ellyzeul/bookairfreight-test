@@ -7,6 +7,7 @@ import type { ContextState } from "../../Context/HomePageContext"
 import "./style.css"
 import validateHomeState from "../../lib/validateSelector"
 import shippingCost from "../../lib/shippingCost"
+import deliveryDate from "../../lib/deliveryDate"
 
 export default function HomePage() {
   const [interfaceError, setInterfaceError] = useState(false)
@@ -21,10 +22,10 @@ export default function HomePage() {
   function onButtonClick() {
     setInterfaceError(false)
 
-    console.log(validateHomeState(state))
     if(!validateHomeState(state)) return
 
     console.log(shippingCost(state))
+    console.log(deliveryDate(state))
   }
 
   return (
