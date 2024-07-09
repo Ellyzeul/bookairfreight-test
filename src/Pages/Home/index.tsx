@@ -7,10 +7,13 @@ import type { ContextState } from "../../Context/HomePageContext"
 import "./style.css"
 import validateHomeState from "../../lib/validateSelector"
 import shippingCost from "../../lib/shippingCost"
-import deliveryDate from "../../lib/deliveryDate"
+import Quote from "../../Components/Quote"
+import selectorValue from "../../lib/util/selectorValue"
+import deliveryDays from "../../lib/deliveryDays"
 
 export default function HomePage() {
   const [interfaceError, setInterfaceError] = useState(false)
+  const [quote, setQuote] = useState(<></>)
   const [state, setState] = useState({
     origin: {},
     destination: {},
@@ -23,9 +26,15 @@ export default function HomePage() {
     setInterfaceError(false)
 
     if(!validateHomeState(state)) return
-
-    console.log(shippingCost(state))
-    console.log(deliveryDate(state))
+    
+    setQuote(<Quote
+      origin={selectorValue(state.origin, state.setInterfaceError)}
+      destination={selectorValue(state.destination, state.setInterfaceError)}
+      channel={selectorValue(state.channel, state.setInterfaceError)}
+      cost={shippingCost(state)}
+      delivery_days={deliveryDays(state)}
+      actions={true}
+    />)
   }
 
   return (
@@ -40,8 +49,11 @@ export default function HomePage() {
           <Selector label="Shipping Channel" options={SHIPPING_CHANNELS}/>
         </section>
         <CartonSet/>
-        <button className="home-page-submit" onClick={onButtonClick}>Submit</button>
-        {interfaceError && <span className="home-page-interface-error"> Error processing the quote...</span>}
+        <div>
+          <button className="home-page-submit" onClick={onButtonClick}>Submit</button>
+          {interfaceError && <span className="home-page-interface-error"> Error processing the quote...</span>}
+        </div>
+        {quote}
       </main>
     </HomePageContext.Provider>
   )

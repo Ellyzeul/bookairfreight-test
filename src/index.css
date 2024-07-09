@@ -26,7 +26,7 @@ body {
 
 .container {
   --padding: 2rem;
-  width: calc(100% - var(--padding));
+  width: calc(100% - var(--padding) * 2);
   height: calc(100% - var(--padding));
   padding-top: var(--padding);
   padding-left: var(--padding);

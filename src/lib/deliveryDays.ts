@@ -1,22 +1,19 @@
 import { ContextState } from "../Context/HomePageContext";
 import selectorValue from "./util/selectorValue";
 
-export default function deliveryDate({channel, setInterfaceError}: ContextState): [Date, Date] {
+export default function deliveryDays({channel, setInterfaceError}: ContextState): [number, number] {
   const shippingChannel = selectorValue<'Air' | 'Ocean'>(channel, setInterfaceError)
-  const date = new Date()
+  const lower = lowerRange(shippingChannel)
   
-  return [
-    new Date(lowerRange(date, shippingChannel)),
-    new Date(upperRange(date, shippingChannel)),
-  ]
+  return [lower, upperRange(lower, shippingChannel)]
 }
 
-function lowerRange(date: Date, channel: 'Air' | 'Ocean') {
-  return date.setDate(date.getDate() + randomInRange(LOWER_RANGE[channel]))
+function lowerRange(channel: 'Air' | 'Ocean') {
+  return randomInRange(LOWER_RANGE[channel])
 }
 
-function upperRange(date: Date, channel: 'Air' | 'Ocean') {
-  return date.setDate(date.getDate() + randomInRange(UPPER_RANGE[channel]))
+function upperRange(lowerRange: number, channel: 'Air' | 'Ocean') {
+  return lowerRange + randomInRange(UPPER_RANGE[channel])
 }
 
 function randomInRange([low, high]: [number, number]) {
