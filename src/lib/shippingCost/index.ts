@@ -8,7 +8,6 @@ export default function shippingCost({origin, destination, channel, cartons, set
     return validateElement(element, setInterfaceError).value as T
   }
 
-  console.log(selectorValue<string>(origin))
   const rate = perKgRate(selectorValue<string>(origin), selectorValue<string>(destination), selectorValue<'Air'|'Ocean'>(channel))
   const basePrice = rate * chargeableWeight(cartonsValues(cartons, setInterfaceError))
 
