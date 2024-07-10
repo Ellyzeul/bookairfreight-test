@@ -29,7 +29,7 @@ function cartonsValues(cartons: Array<CartonControl>, setInterfaceError: (error:
 function inputValue(parent: HTMLDivElement, name: string, setInterfaceError: (error: boolean) => void): number {
   const input = parent.querySelector<HTMLInputElement>(`input[name='${name}']`)
 
-  if(!input) {
+  if(!input || isNaN(Number(input.value))) {
     setInterfaceError(true)
     throw new Error(`Input ${name} missing...`)
   }
